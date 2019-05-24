@@ -1,0 +1,56 @@
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import ROUTES from '../../utils/routes';
+
+class AddUniformsForm extends Component {
+    render() {
+        return (
+            <>
+                <div className="col-md-6 col-sm-12">
+                    <div className="crud-form">
+                        <div className="container-contact100">
+                            <div className="wrap-contact100">
+                                <form className="contact100-form validate-form">
+                                    <span className="contact100-form-title">
+                                        Add School Uniforms
+				                </span>
+                                    <div className="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
+                                        <span className="label-input100">Name</span>
+                                        <input className="input100" type="text" name="name" placeholder="Enter School Name" />
+                                    </div>
+
+                                    <div className="wrap-input100 validate-input bg1 rs1-alert-validate" data-validate="">
+                                        <span className="label-input100">Description</span>
+                                        <textarea className="input100" type="text" name="name" placeholder="Add description of school uniform" />
+                                    </div>
+
+                                    <div className="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
+                                        <span className="label-input100">Image</span>
+                                        <input type="file" className="form-control-file" id="exampleFormControlFile1" />
+                                    </div>
+
+                                    <div className="main-button icon-button" href="#">
+                                        Add Uniform
+                                </div>
+                                    <a>
+                                        <div className="edit-button">
+                                            <i className="fa fa-pencil"></i>
+                                        </div>
+                                    </a>
+                                    <a>
+                                        <div className="delete-button">
+                                            <i className="fa fa-trash-o"></i>
+                                        </div>
+                                    </a>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </>
+        );
+    }
+}
+
+export default AddUniformsForm;
