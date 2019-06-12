@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import Navbar from '../../containers/Navbar';
 import SideNav from '../../components/SideNav';
-import UpdateSchoolForm from '../../containers/UpdateSchoolForm';
+import EditProfileForm from '../../containers/EditProfileForm';
 import ProfileCard from '../../containers/ProfileCard';
 
 
 
-const EditSchoolsPage = props => {
+const EditProfilePage = props => {
     return (
         <>
             <Navbar />
             <SideNav />
-            <UpdateSchoolForm {...props}/>
+            <EditProfileForm {...props}/>
             <ProfileCard {...props}/>
         </>
     );
 };
 
-export default EditSchoolsPage;
+export default EditProfilePage;

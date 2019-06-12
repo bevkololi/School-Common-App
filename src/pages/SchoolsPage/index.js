@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
 import Navbar from '../../containers/Navbar';
 import shule6 from '../../assets/images/shule6.jpg';
-import Schools from '../../components/Schools';
+import Schools from '../../containers/AllSchools';
 
-class SchoolsPage extends Component {
-  render() {
-    return (
-      <>
-        <Navbar />
-        <Schools />
-        
-
-
-      </>
-    );
-  }
-}
+const SchoolsPage = props => {
+  return (
+    <>
+      <Navbar />
+      <Schools {...props} />
+    </>
+  );
+};
 
 export default SchoolsPage;

@@ -2,22 +2,31 @@ import {
     FETCH_MORE_SCHOOLS_SUCCESS,
     FETCH_SCHOOLS,
     FETCH_SCHOOLS_FAILURE,
-    FETCH_SCHOOLs_SUCCESS,
-    FETCH_SCHOOLS_SUCCESS
+    FETCH_SCHOOLS_SUCCESS,
 } from './types';
 import api from '../../../utils/api';
-import { SCHOOL_FETCH } from '../../UpdateSchoolForm/state/types';
 
-export const fetchSchools = () => ({
+
+export const fetchingSchools = () => ({
     type: FETCH_SCHOOLS,
 });
 
-export const fetchSchoolsSuccess = () => ({
+export const fetchSchoolsSuccess = school => ({
     type: FETCH_SCHOOLS_SUCCESS,
     payload: school,
 });
 
-export const fetchSchoolsFailure = () => ({
+export const fetchSchoolsFailure = errors => ({
     type: FETCH_SCHOOLS_FAILURE,
     errors,
-})
+});
+
+export const fetchSchoolsAction = pageNumber => (dispatch) => {
+    dispatch(fetchingSchools());
+    return api.get(`schools/?page=${pageNumber}`)
+      .then((response) => {
+        dispatch(fetchSchoolsSuccess(response.data.data.school));
+      }).catch((error) => {
+        dispatch(fetchSchoolsFailure(error.response));
+      });
+  };

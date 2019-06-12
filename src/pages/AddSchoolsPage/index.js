@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navbar from '../../containers/Navbar';
 import SideNav from '../../components/SideNav';
 import AddSchoolForm from '../../containers/AddSchoolForm';
-import ProfileCard from '../../components/ProfileCard';
+import ProfileCard from '../../containers/ProfileCard';
 
 
 
@@ -12,7 +12,7 @@ const AddSchoolsPage = props => {
             <Navbar />
             <SideNav />
             <AddSchoolForm {...props} />
-            <ProfileCard />
+            <ProfileCard {...props}/>
         </>
     );
 }

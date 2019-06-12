@@ -563,9 +563,10 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 .school .school-img {
 	position: relative;
 	display:block;
-	margin-bottom:20px;
+	margin-bottom:5px;
 	border-radius:4px;
 	overflow:hidden;
+	height: 180px;
 }
 
 .school .school-img > img {
@@ -618,11 +619,11 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 
 .school .school-title {
 	display:block;
-	height:42px;
+	height:30px;
 }
 
 .school .school-details {
-	margin-top: 20px;
+	margin-top: 5px;
 	padding-top: 10px;
 	border-top: 1px solid #EBEBEB;
 }

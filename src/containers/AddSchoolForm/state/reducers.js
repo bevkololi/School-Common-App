@@ -7,6 +7,7 @@ import {
 export const initialState = {
   isSaving: false,
   isSaved: true,
+  success: false,
   errors: [],
   school: {
   },
@@ -22,6 +23,7 @@ export default (state = initialState, action) => {
         school: action.payload,
         isSaving: false,
         isSaved: true,
+        success: true,
       };
     case SCHOOL_SAVE_FAILURE:
       return {

@@ -171,7 +171,7 @@ class Schools extends Component {
                                                 <img src={shule5} alt="school" />
                                                 <i className="school-link-icon fa fa-link"></i>
                                             </a>
-                                            <a className="school-title" href="#">Moi Kabarak High School Moi Kabarak High School Moi Kabarak High School</a>
+                                            <a className="school-title" href="#">Moi Kabarak High School</a>
                                             <div className="school-details">
                                                 <span className="school-category">High School</span>
                                                 <span className="school-price school-free">Private</span>
@@ -185,7 +185,7 @@ class Schools extends Component {
                                                 <img src={shule5} alt="school" />
                                                 <i className="school-link-icon fa fa-link"></i>
                                             </a>
-                                            <a className="school-title" href="#">Moi Kabarak High School Moi Kabarak High School Moi Kabarak High School</a>
+                                            <a className="school-title" href="#">Moi Kabarak High School </a>
                                             <div className="school-details">
                                                 <span className="school-category">High School</span>
                                                 <span className="school-price school-free">Private</span>
@@ -199,7 +199,7 @@ class Schools extends Component {
                                                 <img src={shule5} alt="school" />
                                                 <i className="school-link-icon fa fa-link"></i>
                                             </a>
-                                            <a className="school-title" href="#">Moi Kabarak High School Moi Kabarak High School Moi Kabarak High School</a>
+                                            <a className="school-title" href="#">Moi Kabarak High School </a>
                                             <div className="school-details">
                                                 <span className="school-category">High School</span>
                                                 <span className="school-price school-free">Private</span>
@@ -213,7 +213,7 @@ class Schools extends Component {
                                                 <img src={shule5} alt="school" />
                                                 <i className="school-link-icon fa fa-link"></i>
                                             </a>
-                                            <a className="school-title" href="#">Moi Kabarak High School Moi Kabarak High School Moi Kabarak High School</a>
+                                            <a className="school-title" href="#">Moi Kabarak High School </a>
                                             <div className="school-details">
                                                 <span className="school-category">High School</span>
                                                 <span className="school-price school-free">Private</span>
@@ -227,7 +227,7 @@ class Schools extends Component {
                                                 <img src={shule5} alt="school" />
                                                 <i className="school-link-icon fa fa-link"></i>
                                             </a>
-                                            <a className="school-title" href="#">Moi Kabarak High School Moi Kabarak High School Moi Kabarak High School</a>
+                                            <a className="school-title" href="#">Moi Kabarak High School </a>
                                             <div className="school-details">
                                                 <span className="school-category">High School</span>
                                                 <span className="school-price school-free">Private</span>
@@ -241,7 +241,7 @@ class Schools extends Component {
                                                 <img src={shule5} alt="school" />
                                                 <i className="school-link-icon fa fa-link"></i>
                                             </a>
-                                            <a className="school-title" href="#">Moi Kabarak High School Moi Kabarak High School Moi Kabarak High School</a>
+                                            <a className="school-title" href="#">Moi Kabarak High School </a>
                                             <div className="school-details">
                                                 <span className="school-category">High School</span>
                                                 <span className="school-price school-free">Private</span>
@@ -255,7 +255,7 @@ class Schools extends Component {
                                                 <img src={shule5} alt="school" />
                                                 <i className="school-link-icon fa fa-link"></i>
                                             </a>
-                                            <a className="school-title" href="#">Moi Kabarak High School Moi Kabarak High School Moi Kabarak High School</a>
+                                            <a className="school-title" href="#">Moi Kabarak High School </a>
                                             <div className="school-details">
                                                 <span className="school-category">High School</span>
                                                 <span className="school-price school-free">Private</span>
@@ -269,7 +269,7 @@ class Schools extends Component {
                                                 <img src={shule5} alt="school" />
                                                 <i className="school-link-icon fa fa-link"></i>
                                             </a>
-                                            <a className="school-title" href="#">Moi Kabarak High School Moi Kabarak High School Moi Kabarak High School</a>
+                                            <a className="school-title" href="#">Moi Kabarak High School </a>
                                             <div className="school-details">
                                                 <span className="school-category">High School</span>
                                                 <span className="school-price school-free">Private</span>
@@ -283,7 +283,7 @@ class Schools extends Component {
                                                 <img src={shule5} alt="school" />
                                                 <i className="school-link-icon fa fa-link"></i>
                                             </a>
-                                            <a className="school-title" href="#">Moi Kabarak High School Moi Kabarak High School Moi Kabarak High School</a>
+                                            <a className="school-title" href="#">Moi Kabarak High School </a>
                                             <div className="school-details">
                                                 <span className="school-category">High School</span>
                                                 <span className="school-price school-free">Private</span>

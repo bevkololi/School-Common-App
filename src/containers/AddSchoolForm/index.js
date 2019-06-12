@@ -26,14 +26,28 @@ class AddSchoolForm extends Component {
     this.setState({ school: currentState });
   };
 
+  // componentWillReceiveProps = (nextProps) => {
+  //   const { errors } = nextProps;
+  //   if (errors.length > 0) {
+  //     this.setState({ errors });
+  //   }
+  //   else {
+  //     this.clearState();
+  //     swal("School added successfully!", "Viewers can now see your school.", "success")
+  //   }
+  // };
+
   componentWillReceiveProps = (nextProps) => {
     const { errors } = nextProps;
-    if (errors.length > 0) {
-      this.setState({ errors });
-    }
-    else {
-      this.clearState();
-      swal("School added successfully!", "Viewers can now see your school.", "success")
+    this.setState({ errors });
+  };
+
+
+  componentDidUpdate = (prevProps) => {
+    const { success } = this.props;
+    if (!prevProps.success && success) {
+      setTimeout(this.clearState, 1000);
+      swal("School added successfully!", "Viewers can now see your school.", "success");
     }
   };
 
@@ -145,14 +159,15 @@ AddSchoolForm.propTypes = {
   errors: PropTypes.shape({}),
   saveSchool: PropTypes.func.isRequired,
   isSaving: PropTypes.bool.isRequired,
+  success: PropTypes.bool.isRequired,
 };
 
-// const mapStateToProps = ({ schoolcreate }) => schoolcreate;
+const mapStateToProps = ({ schoolcreate }) => schoolcreate;
 
-const mapStateToProps = (state) => ({
-  school: state.schoolcreate.school,
-  errors: state.schoolcreate.errors
-});
+// const mapStateToProps = (state) => ({
+//   school: state.schoolcreate.school,
+//   errors: state.schoolcreate.errors
+// });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   saveSchool: saveSchoolAction,

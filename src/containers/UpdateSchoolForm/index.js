@@ -13,8 +13,6 @@ class UpdateSchoolForm extends Component {
       name: '',
       about: '',
       history: '',
-      feeStructure: '',
-      results: '',
     },
     errors: [],
   };
@@ -22,15 +20,14 @@ class UpdateSchoolForm extends Component {
   // componentDidMount(){
   //   const { getSchool, match = {} } = this.props;
   //   const { params = {} } = match;
-  //   const { slug } = params;
-  //   const { school } = this.state;
-  //   const { oldschool } = getSchool(slug);
-  //   this.setState({ school: oldschool })
+  //   const { slug } = params;;
+  //   getSchool(slug);
   // }
 
   onChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
   onChange = (e) => {
     const { school } = { ...this.state };
     const currentState = school;
@@ -50,6 +47,14 @@ class UpdateSchoolForm extends Component {
     updateSchool(slug, data);
   };
 
+  componentDidUpdate = (prevProps) => {
+    const { success } = this.props;
+    if (!prevProps.success && success) {
+      setTimeout(this.clearState, 1000);
+      swal("School Updated Successfully!", "View school to double check and make any more changes!", "success")
+    }
+  };
+
   componentWillReceiveProps(nextProps) {
     const { school } = this.state;
     const newSchool = nextProps.school;
@@ -65,10 +70,10 @@ class UpdateSchoolForm extends Component {
           { slug: newSchool.slug })
       });
     }
-    if (nextProps.errors.length === 0) {
-      swal("School Updated Successfully!", "View school to double check and make any more changes!", "success")
-      this.clearState();
-    };
+    // if (nextProps.errors.length === 0) {
+    //   swal("School Updated Successfully!", "View school to double check and make any more changes!", "success")
+    //   this.clearState();
+    // };
   }
 
   clearState = () => {
@@ -85,8 +90,8 @@ class UpdateSchoolForm extends Component {
   renderErrors = errors => (
     <div className="text-danger">
       <ul>
-        { errors.map(error => (
-          <li key={error}>{ error }</li>
+        {errors.map(error => (
+          <li key={error}>{error}</li>
         ))}
       </ul>
     </div>
@@ -105,7 +110,7 @@ class UpdateSchoolForm extends Component {
                 <form className="contact100-form validate-form" onSubmit={this.handleSubmit}>
                   <span className="contact100-form-title">Edit School</span>
                   <div style={{ fontSize: "20px" }}>
-                  { errors.length > 0 ? (this.renderErrors(errors)) : null}
+                    {errors.length > 0 ? (this.renderErrors(errors)) : null}
                   </div>
                   <div className="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
                     <span className="label-input100">FULL NAME *</span>
@@ -165,10 +170,12 @@ UpdateSchoolForm.propTypes = {
   match: PropTypes.shape({}).isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  school: state.schoolupdate.school,
-  errors: state.schoolupdate.errors
-});
+// const mapStateToProps = (state) => ({
+//   school: state.schoolupdate.school,
+//   errors: state.schoolupdate.errors
+// });
+
+const mapStateToProps = ({ schoolupdate}) => schoolupdate;
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   updateSchool: updateSchoolAction,

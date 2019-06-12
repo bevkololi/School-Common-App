@@ -23,6 +23,7 @@ import EditSchoolsPage from '../pages/EditSchoolsPage';
 import AddEventsPage from '../pages/AddEventsPage';
 import AddUpdatesPage from '../pages/AddUpdatesPage';
 import AddUniformsPage from '../pages/AddUniformsPage';
+import EditProfilePage from '../pages/EditProfilePage';
 
 class AuthenticatedRoute extends Component {
   constructor(props) {
@@ -72,8 +73,8 @@ export default () => (
   <Router>
     <Switch>
       <Route exact path={ROUTES.index} component={HomePage} />
-      {/* <Route exact path={ROUTES.schools} component={SchoolsPage} />
-      <Route exact path={ROUTES.school} component={ViewSchoolPage} /> */}
+      <Route exact path={ROUTES.schools.all} component={SchoolsPage} />
+      <Route exact path={ROUTES.schools.view} component={ViewSchoolPage} />
       <Route exact path={ROUTES.album} component={AlbumPage} />
       <Route exact path={ROUTES.events} component={EventsPage} />
       <Route exact path={ROUTES.updates} component={UpdatesPage} />
@@ -86,6 +87,7 @@ export default () => (
       <Route exact path={ROUTES.adduniforms} component={AddUniformsPage} />
       <AuthenticatedRoute exact path={ROUTES.auth.register} component={SignUpPage} />
       <AuthenticatedRoute exact path={ROUTES.auth.login} component={LoginPage} />
+      <AuthenticatedRoute exact path={ROUTES.profile} component={EditProfilePage} />
     </Switch>
   </Router>
 );

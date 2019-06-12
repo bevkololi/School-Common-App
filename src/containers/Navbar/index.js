@@ -41,13 +41,13 @@ class Navbar extends Component {
           <nav id="nav">
             <ul className="main-menu nav navbar-nav navbar-right">
               <li><Link to={ROUTES.index}>Home</Link></li>
-              <li><Link to={ROUTES.schools}>Schools</Link></li>
+              <li><Link to="/schools/all/1">Schools</Link></li>
               <li><Link to={ROUTES.contact}>Contact</Link></li>
               <li className="drop-down">
                 <a href="#">
                   <img src={user.image || avatar} className="profile-image img-circle" /></a>
                 <ul>
-                  <li><Link to={ROUTES.index}>Profile</Link></li>
+                  <li><Link to={ROUTES.profile}>Profile</Link></li>
                   <li><Link to={ROUTES.schools.create}>Add School</Link></li>
                   <li><Link to={ROUTES.index}>My schools</Link></li>
                   <li><Link to={ROUTES.index}>Notifications</Link></li>
@@ -86,7 +86,7 @@ class Navbar extends Component {
                   <nav id="nav">
                     <ul className="main-menu nav navbar-nav navbar-right">
                       <li><Link to={ROUTES.index}>Home</Link></li>
-                      <li><Link to={ROUTES.schools}>Schools</Link></li>
+                      <li><Link to={ROUTES.schools.all}>Schools</Link></li>
                       <li><Link to={ROUTES.contact}>Contact</Link></li>
                       <li><Link to={ROUTES.auth.login}>Login</Link></li>
                     </ul>
@@ -153,9 +153,6 @@ Navbar.propTypes = {
   user: PropTypes.shape({}),
 };
 
-Navbar.defaultProps = {
-  user: {}
-};
 
 const mapStateToProps = pageProgress => pageProgress;
 

@@ -13,7 +13,8 @@ class ProfileCard extends Component {
                         <div className="profile-image"><img src="http://trendinginkenya.com/wp-content/uploads/2018/11/Moi-High-School-Kabarak-1.jpg" alt="sample47" /></div>
                         <figcaption>
                             <h3>Moi High School</h3>
-                            <h4>High School</h4>
+                            <h4>High School (Private)</h4>
+                            <h6>Laikipia County</h6>
                             <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
                             <div className="icons"><a href="#"><i className="ion-social-reddit"></i></a>
                                 <a href="#"> <i className="ion-social-twitter"></i></a>

@@ -5,9 +5,10 @@ const ROUTES = {
     register: '/register',
   },
   schools: {
-    create: '/schools/:slug',
+    create: '/schools/new',
     update: '/schools/edit/:slug',
-    view: '/schools/:schoolName/:slug',
+    view: '/schools/view/:slug',
+    all: '/schools/all/:pageNumber',
   },
   // schools: '/schools',
   // school: '/school',
@@ -21,5 +22,6 @@ const ROUTES = {
   addevent: '/addevent',
   addupdate: '/addupdate',
   adduniforms: '/adduniforms',
+  profile: '/profile/update'
 };
 export default ROUTES;

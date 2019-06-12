@@ -1,21 +1,16 @@
 import React, { Component } from 'react';
 import Navbar from '../../containers/Navbar';
-import ViewSchool from '../../components/ViewSchool';
-import Teaser from '../../components/Teaser';
+import ViewSchool from '../../containers/ViewSchool';
+// import Teaser from '../../components/Teaser';
 
-class SignUpPage extends Component {
-  render() {
-    return (
-      <>
-        <Navbar />
-        <Teaser />
-        <ViewSchool />
-        
+const ViewSchoolPage = props => {
+  return (
+    <>
+      <Navbar />
+      {/* <Teaser /> */}
+      <ViewSchool {...props} />
+    </>
+  );
+};
 
-
-      </>
-    );
-  }
-}
-
-export default SignUpPage;
+export default ViewSchoolPage;
