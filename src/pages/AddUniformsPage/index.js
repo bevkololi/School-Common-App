@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from '../../components/Navbar';
+import Navbar from '../../containers/Navbar';
 import SideNav from '../../components/SideNav';
 import AddUniformsForm from '../../components/AddUniformsForm';
 import ProfileCard from '../../components/ProfileCard';

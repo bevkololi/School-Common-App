@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import Navbar from '../../containers/Navbar';
-import Event from '../../components/Event';
+import Events from '../../containers/ListEvents';
 
 
 
-class EventsPage extends Component {
-    render() {
-        return (
-            <>
-                <Navbar />
-                <Event />
-                <Event />
-            </>
-        );
-    }
+const EventsPage = props => {
+    return (
+        <>
+            <Navbar />
+            <Events {...props} />
+        </>
+    );
 }
 
 export default EventsPage;

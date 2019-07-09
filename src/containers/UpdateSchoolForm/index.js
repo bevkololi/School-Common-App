@@ -24,9 +24,9 @@ class UpdateSchoolForm extends Component {
   //   getSchool(slug);
   // }
 
-  onChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
+  // onChange = (event) => {
+  //   this.setState({ [event.target.name]: event.target.value });
+  // };
 
   onChange = (e) => {
     const { school } = { ...this.state };

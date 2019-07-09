@@ -109,7 +109,7 @@ class AddSchoolForm extends Component {
                   <div style={{ fontSize: "20px" }}>
                     {errors.length > 0 ? (this.renderErrors(errors)) : null}
                   </div>
-                  <div className="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
+                  <div className="wrap-input100 validate-input bg1" data-validate="">
                     <span className="label-input100">FULL NAME *</span>
                     <input className="input100" type="text" name="name" placeholder="Enter School Name"
                       onChange={this.onChange} value={this.state.school.name} required="required" />

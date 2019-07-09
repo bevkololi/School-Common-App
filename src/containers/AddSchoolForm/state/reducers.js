@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
         isSaved: false,
         isSaving: false,
         errorFetching: true,
-        errors: [action.payload.data.data.name],
+        errors: [action.payload.data.data.errors],
       };
     default: return state;
   }

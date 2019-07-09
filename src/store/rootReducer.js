@@ -7,6 +7,9 @@ import schoolcreate from '../containers/AddSchoolForm/state/reducers';
 import schoolupdate from '../containers/UpdateSchoolForm/state/reducers';
 import listschools from '../containers/ListSchools/state/reducers';
 import userProfiles from '../containers/EditProfileForm/state/reducers';
+import eventCreate from '../containers/AddEventForm/state/reducers';
+import listevents from '../containers/ListEvents/state/reducers';
+import editevent from '../containers/EditEvent/state/reducers';
 
 const rootReducer = combineReducers({
   app,
@@ -17,6 +20,9 @@ const rootReducer = combineReducers({
   schoolupdate,
   listschools,
   userProfiles,
+  eventCreate,
+  listevents,
+  editevent,
 });
 
 export default rootReducer;
