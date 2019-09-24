@@ -11,6 +11,7 @@ import { getCurrentUser, getToken } from '../../utils/auth';
 
 
 class Navbar extends Component {
+  timeout;
   state = {
     hiddenLoader: false,
   }
@@ -104,12 +105,16 @@ class Navbar extends Component {
     if (isPageLoading) {
       this.setState({ hiddenLoader: false });
     } else {
-      setTimeout(() => {
+      this.timeout = setTimeout(() => {
         /* istanbul ignore next */
         this.setState({ hiddenLoader: true });
       }, 500);
     }
   };
+
+  componentWillUnmount(){
+    clearTimeout(this.timeout);
+  }
 
   showProgress = (pageLoading) => {
     const { hiddenLoader } = this.state;
@@ -134,7 +139,7 @@ class Navbar extends Component {
     return (
       <>
         {this.getMenu(user)}
-        {this.showProgress(isPageLoading)}
+        {/* {this.showProgress(isPageLoading)} */}
       </>
     );
   }

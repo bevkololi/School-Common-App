@@ -46,6 +46,7 @@ class AddSchoolForm extends Component {
   componentDidUpdate = (prevProps) => {
     const { success } = this.props;
     if (!prevProps.success && success) {
+      localStorage.setItem('slug', JSON.stringify(this.props.school.slug)); 
       setTimeout(this.clearState, 1000);
       swal("School added successfully!", "Viewers can now see your school.", "success");
     }
@@ -156,7 +157,7 @@ AddSchoolForm.defaultProps = {
 };
 
 AddSchoolForm.propTypes = {
-  errors: PropTypes.shape({}),
+  errors: PropTypes.array,
   saveSchool: PropTypes.func.isRequired,
   isSaving: PropTypes.bool.isRequired,
   success: PropTypes.bool.isRequired,

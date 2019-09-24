@@ -5,6 +5,8 @@ export const getCurrentUser = () => {
   };
   
   export const getToken = () => JSON.parse(window.localStorage.getItem('token'));
-  
 
-  JSON.parse(window.localStorage.getItem('animal'))
+  export const getSlug = () => {
+    const slug = localStorage.getItem('slug');
+    return slug ? JSON.parse(slug) : slug;
+  };

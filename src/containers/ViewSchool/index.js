@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getSchoolAction } from '../UpdateSchoolForm/state/actions';
 import swal from 'sweetalert';
+import { getSlug } from '../../utils/auth';
 
 
 class ViewSchool extends Component {
@@ -140,9 +141,9 @@ class ViewSchool extends Component {
                 <div className="widget category-widget">
                   <h3>Resources</h3>
                   <Link to={ROUTES.album} className="category">Album</Link>
-                  <Link to={ROUTES.events} className="category">Events</Link>
+                  <Link to={`/events/${school.slug}`} className="category">Events</Link>
                   <Link to={ROUTES.updates} className="category">Updates</Link>
-                  <Link to={ROUTES.uniforms} className="category">Uniforms</Link>
+                  <Link to={`/uniforms/${school.slug}`} className="category">Uniforms</Link>
                   <Link to={ROUTES.index} className="category">Fee structure</Link>
                   <Link to={ROUTES.index} className="category">Location</Link>
                   <Link to={ROUTES.index} className="category">Results</Link>
@@ -169,12 +170,12 @@ ViewSchool.defaultProps = {
 };
 
 ViewSchool.propTypes = {
-  errors: PropTypes.shape({}),
+  errors: PropTypes.array,
   getSchool: PropTypes.func.isRequired,
   isSaved: PropTypes.bool.isRequired,
   isFetched: PropTypes.bool.isRequired,
   // school: PropTypes.shape({}).isRequired,
-  slug: PropTypes.string.isRequired,
+  // slug: PropTypes.string.isRequired,
   history: PropTypes.shape({}).isRequired,
   match: PropTypes.shape({}).isRequired,
 };

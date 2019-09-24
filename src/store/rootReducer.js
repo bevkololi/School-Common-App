@@ -10,6 +10,9 @@ import userProfiles from '../containers/EditProfileForm/state/reducers';
 import eventCreate from '../containers/AddEventForm/state/reducers';
 import listevents from '../containers/ListEvents/state/reducers';
 import editevent from '../containers/EditEvent/state/reducers';
+import uniformCreate from '../containers/AddUniformsForm/state/reducers';
+import listuniforms from '../containers/ListUniforms/state/reducers';
+import edituniform from '../containers/EditUniform/state/reducers';
 
 const rootReducer = combineReducers({
   app,
@@ -23,6 +26,9 @@ const rootReducer = combineReducers({
   eventCreate,
   listevents,
   editevent,
+  uniformCreate,
+  listuniforms,
+  edituniform,
 });
 
 export default rootReducer;

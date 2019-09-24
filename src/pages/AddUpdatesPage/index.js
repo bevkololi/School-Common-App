@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navbar from '../../containers/Navbar';
 import SideNav from '../../components/SideNav';
 import AddUpdateForm from '../../components/AddUpdateForm';
-import ProfileCard from '../../components/ProfileCard';
+import ProfileCard from '../../containers/ProfileCard';
 
 
 

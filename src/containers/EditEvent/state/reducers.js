@@ -11,7 +11,7 @@ export const initialState = {
     isSaved: true,
     errors: [],
     event: {
-        event: {}
+        // event: {}
     },
     isFetched: false,
     isFetching: true,
@@ -44,7 +44,7 @@ const reducer = (state = initialState, action) => {
                 isSaved: false,
                 isSaving: false,
                 errorFetching: true,
-                errors: [action.payload.data.message],
+                errors: [action.errors.data.data],
             };
         case DELETE_EVENT_SUCCESS:
             return {
@@ -62,7 +62,7 @@ const reducer = (state = initialState, action) => {
                 isSaved: false,
                 isSaving: false,
                 errorFetching: true,
-                errors: [action.payload.data.message],
+                errors: [action.payload],
             };
         default:
             return state;

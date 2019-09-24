@@ -31,6 +31,7 @@ export const saveSchoolAction = (school) => (dispatch) => {
   return api.post('schools/', school)
     .then((data) => {
       dispatch(schoolSaveSuccess(data.data.data.school));
+      // localStorage.setItem('slug', JSON.stringify(data.data.data.school.slug));
       dispatch(pageLoadedAction());
     }).catch((errors) => {
       dispatch(schoolSaveFailure(errors.response));

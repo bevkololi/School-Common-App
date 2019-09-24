@@ -77,7 +77,7 @@ export default () => (
       <Route exact path={ROUTES.schools.view} component={ViewSchoolPage} />
       <Route exact path={ROUTES.album} component={AlbumPage} />
       <Route exact path={ROUTES.events} component={EventsPage} />
-      <Route exact path={ROUTES.updates} component={UpdatesPage} />
+      <Route exact path={ROUTES.addupdate} component={UpdatesPage} />
       <Route exact path={ROUTES.uniforms} component={UniformsPage} />
       <Route exact path={ROUTES.contact} component={ContactPage} />
       <AuthenticatedRoute exact path={ROUTES.schools.create} component={AddSchoolsPage} />

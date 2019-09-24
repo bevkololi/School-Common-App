@@ -4,7 +4,9 @@ import Materialize from 'materialize-css';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { editEventAction } from './state/actions';
+import { fetchEventsAction } from '../../containers/ListEvents/state/actions';
 import Modal from '../../components/Modal';
+import { getSlug } from '../../utils/auth';
 import swal from 'sweetalert';
 
 
@@ -17,12 +19,57 @@ class EditEvent extends Component {
       body: '',
     },
     errors: [],
+    edit_id: null,
   };
 
 
   componentDidMount = () => {
-    const modal = document.querySelector('#edit-event-modal');
-    Materialize.Modal.init(modal, {});
+    this.updateModals();
+    // const clickedModal = document.getElementById('[id^="edit-event-modal"]');
+    // console.log('AAAAAA', clickedModal);
+  };
+
+  componentWillReceiveProps(prevProps) {
+    this.updateModals();
+    // const { events } = prevProps;
+    // console.log('YYYYYYY', events);
+    // events.forEach(event => {
+    //   const modal = document.querySelector(`#edit-event-modal_${event.event_id}`);
+      // const modal = document.getElementById(`#edit-event-modal_${event.event_id}`);
+      // console.log('AAAAAA', modal);
+      // const the_id = JSON.stringify(modal.id);
+      // const edit_id = the_id.match(/\d+/g).pop();
+      // if (edit_id == event.event_id) {
+      //   console.log('ZZZZZZZ', Materialize.Modal.init(modal, {}));
+      //   this.setState({
+      //     event: {
+      //       title: event.title, date: event.date,
+      //       time: event.time, body: event.body
+      //     }
+      //   });
+      // }
+    // })
+  }
+
+  updateModals = () => {
+    const { events, edit_id } = this.props;
+    console.log('XXXXXXX', edit_id);
+    events.forEach(event => {
+      const modal = document.querySelector(`#edit-event-modal_${event.event_id}`);
+      Materialize.Modal.init(modal, {});
+      const the_id = JSON.stringify(modal.id);
+      const edit_id = the_id.match(/\d+/g).pop();
+      // if (edit_id == event.event_id) {
+      //   console.log('YYYYYYYY', edit_id);
+      //   console.log('ZZZZZZZZ', event.event_id);
+      //   this.setState({
+      //     event: {
+      //       title: event.title, date: event.date,
+      //       time: event.time, body: event.body
+      //     }
+      //   });
+      // }
+    });
   };
 
   onChange = (e) => {
@@ -42,16 +89,19 @@ class EditEvent extends Component {
   };
 
   componentDidUpdate = (prevProps) => {
-    const { success } = this.props;
+    const { success, fetchEvents } = this.props;
     if (!prevProps.success && success) {
       setTimeout(this.clearState, 1000);
-      // swal("Event updated successfully!", "Viewers can now see school events.", "success");
-      swal({title: "Event updated successfully!", text: "Viewers can now see school events.", type: 
-"success"}).then(function(){ 
-   window.location.reload();
-   }
-
-);
+      swal("Event updated successfully!", "Viewers can now see school events.", "success");
+      // swal({
+      //   title: "Event updated successfully!", text: "Viewers can now see school events.", type:
+      //     "success"
+      // }).then(function () {
+      //   window.location.reload();
+      // }
+      // );
+      const slug = getSlug();
+      fetchEvents(slug);
     }
   };
 
@@ -74,12 +124,13 @@ class EditEvent extends Component {
   // }
 
   render() {
-    const { events } = this.props;
+    const { events, errors } = this.props;
     const editEvent = events.length ? (
       events.map(event => {
         return (
-          <Modal title={event.title} id="edit-event-modal" key={event.event_id}>
+          <Modal title={event.title} id={`edit-event-modal_${event.event_id}`} key={event.event_id}>
             <form onSubmit={this.handleSubmit}>
+
               <div className="wrap-input100 validate-input bg1">
                 <span className="label-input100">Title</span>
                 <input className="input100" type="text" name="title" placeholder="Enter Event Title"
@@ -130,6 +181,7 @@ EditEvent.defaultProps = {
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
     editEvent: editEventAction,
+    fetchEvents: fetchEventsAction,
   },
   dispatch,
 );
@@ -138,7 +190,9 @@ const mapStateToProps = ({ editevent }) => editevent;
 
 EditEvent.propTypes = {
   editEvent: PropTypes.func.isRequired,
+  fetchEvents: PropTypes.func.isRequired,
   success: PropTypes.bool.isRequired,
+  errors: PropTypes.array,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditEvent);

@@ -1549,7 +1549,8 @@ table h4 {
 }
 
 .card-img-top {
-	width: 370px;
+	width: 360px;
+	height: 220px;
 }
 .btn-primary {
 	background-color: rgb(27, 216, 128);
@@ -2366,18 +2367,33 @@ nav li:hover ul li {
 	left: 0;
 	width:100%;
 	height: auto;
-	background: rgb(153, 151, 151);
+	/* background: rgb(218, 212, 212); */
 	transform: translate(-50%,-50%);
-  }
+}
+
+.modal-backdrop
+{
+    background-color: #000000;
+    opacity:1.0;
+}
   
-/* .modal-main {
-	position:fixed;
-	background: white;
-	width: 80%;
-	height: auto;
-	top:50%;
-	left:50%;
-	transform: translate(-50%,-50%);
-} */
+/*------------------------------------*\
+	Uniforms
+\*------------------------------------*/
+.purchase {
+	float: left;
+}
+
+.edit-uniform {
+	float: left;
+	margin-left: 150px;
+	cursor: pointer;
+}
+
+.delete-uniform {
+	float: left;
+	margin-left: 20px;
+	cursor: pointer;
+}
 
 

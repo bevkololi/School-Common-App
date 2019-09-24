@@ -19,6 +19,7 @@ class Events extends Component {
     total_pages: null,
     next_page: null,
     previous_page: null,
+    edit_id : null,
   };
 
   componentDidMount() {
@@ -26,6 +27,11 @@ class Events extends Component {
     const { params = {} } = match;
     const { slug } = params;
     fetchEvents(slug);
+    setInterval(this.editEvent, 1000);
+  }
+
+  editEvent = (event_id) => {
+    this.setState({ edit_id: event_id});
   }
 
   handleDelete(event_id) {
@@ -53,29 +59,6 @@ class Events extends Component {
       });
   }
 
-  // editEvent = () => {
-  //   return (
-  //     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  //       <div class="modal-dialog" role="document">
-  //         <div class="modal-content">
-  //           <div class="modal-header">
-  //             <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-  //             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-  //               <span aria-hidden="true">&times;</span>
-  //             </button>
-  //           </div>
-  //           <div class="modal-body">
-  //             ...
-  //     </div>
-  //           <div class="modal-footer">
-  //             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-  //             <button type="button" class="btn btn-primary">Save changes</button>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
-  // };
 
   render() {
     const { events, previous_page, next_page, isConfirm } = this.props;
@@ -86,12 +69,11 @@ class Events extends Component {
     // const n = this.props.total_pages;
 
 
-
     const eventsList = events.length ? (
       events.map(event => {
         return (
           <div className="events" key={event.event_id}>
-          <EditEvent {...this.props} />
+            <EditEvent {...this.props} edit_id={this.state.edit_id} />
             <table>
               <thead>
                 <tr>
@@ -111,7 +93,7 @@ class Events extends Component {
                     <p></p>
                   </th>
                   <td colSpan="2">
-                    <button type="button" className="main-button icon-button edit-event modal-trigger" href="#edit-event-modal">
+                    <button type="button" className="main-button icon-button edit-event modal-trigger" href={`#edit-event-modal_${event.event_id}`} >
                       Edit
                     </button>
                     <button type="button" className="main-button icon-button delete-event" onClick={() => this.handleDelete(event.event_id)} >

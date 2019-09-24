@@ -24,7 +24,7 @@ class SideNav extends Component {
               </li>
               <li>
                 <i className="fa-li fa fa-trash" aria-hidden="true"></i>
-                <Link to={ROUTES.editschool}>Delete School</Link>
+                <Link to={ROUTES.schools.update}>Delete School</Link>
               </li>
               <li>
                 <i className="fa-li fa fa-calendar" aria-hidden="true"></i>

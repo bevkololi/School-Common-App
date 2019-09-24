@@ -38,7 +38,7 @@ PreLoader.defaultProps = {
 PreLoader.propTypes = {
   horizontal: PropTypes.bool,
   progress: PropTypes.number,
-  classNames: PropTypes.string,
+  classNames: PropTypes.bool,
   determinate: PropTypes.bool,
   size: PropTypes.string,
 };

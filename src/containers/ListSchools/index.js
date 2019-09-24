@@ -16,8 +16,8 @@ class ListSchools extends Component {
 
   componentDidMount = () => {
     const {
-      fetchSchools, params } = this.props;
-    fetchSchools(params);
+      fetchSchools} = this.props;
+    fetchSchools(1);
   };
 
 
@@ -29,7 +29,7 @@ class ListSchools extends Component {
           <div id="schools-wrapper" key={school.slug}>
             <div className="col-md-3 col-sm-6 col-xs-6" >
               <div className="school">
-                <Link to={`/schools/view/${school.slug}`} className="school-img">
+                <Link to={`/schools/view/`} className="school-img">
                   <img src={school.school.image || avatar} alt="school" />
                   <i className="school-link-icon fa fa-link"></i>
                 </Link>

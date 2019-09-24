@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { saveEventAction } from './state/actions';
+import { getSlug } from '../../utils/auth';
 import swal from 'sweetalert';
 
 class AddEventForm extends Component {
@@ -40,10 +41,15 @@ class AddEventForm extends Component {
   };
 
   componentDidUpdate = (prevProps) => {
-    const { success } = this.props;
+    const { success, history } = this.props;
+    const slug = getSlug();
     if (!prevProps.success && success) {
       setTimeout(this.clearState, 1000);
-      swal("Event added successfully!", "Viewers can now see school events.", "success");
+      swal("Event added successfully!",
+           "Viewers can now see school events.",
+           "success").then(function () {
+             history.push(`/events/${slug}`)
+           })
     }
   };
 
@@ -60,9 +66,10 @@ class AddEventForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const data = { ...this.state };
+    const slug = getSlug();
     const { saveEvent, match = {} } = this.props;
-    const { params = {} } = match;
-    const { slug } = params;
+    // const { params = {} } = match;
+    // const { slug } = params;
     saveEvent(slug, data);
   };
 
@@ -107,13 +114,13 @@ class AddEventForm extends Component {
 
                   <div className="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
                     <span className="label-input100">Time</span>
-                    <input type="time" name="time" className="form-control" onChange={this.onChange} value={this.state.event.time} required="true"/>
+                    <input type="time" name="time" className="form-control" onChange={this.onChange} value={this.state.event.time} required="required"/>
                   </div>
 
                   <div className="wrap-input100 validate-input bg1 rs1-alert-validate" data-validate="">
                     <span className="label-input100">Details</span>
                     <textarea className="input100" type="text" name="body" placeholder="Write details on the event" 
-                    onChange={this.onChange} value={this.state.event.body} required="true"/>
+                    onChange={this.onChange} value={this.state.event.body} required="required"/>
                   </div>
 
                   <button type="submit" className="main-button icon-button" disabled={isSaving}>
@@ -145,7 +152,7 @@ AddEventForm.defaultProps = {
 };
 
 AddEventForm.propTypes = {
-  errors: PropTypes.shape({}),
+  errors: PropTypes.array,
   saveEvent: PropTypes.func.isRequired,
   isSaving: PropTypes.bool.isRequired,
   success: PropTypes.bool.isRequired,

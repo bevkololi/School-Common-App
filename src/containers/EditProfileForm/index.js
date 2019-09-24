@@ -133,8 +133,8 @@ EditProfileForm.propTypes = {
   editUserProfile: PropTypes.func.isRequired,
   user: PropTypes.shape({}).isRequired,
   profile: PropTypes.shape({
-    image: PropTypes.shape([]).isRequired,
-    bio: PropTypes.string.isRequired,
+    // image: PropTypes.shape([]).isRequired,
+    // bio: PropTypes.string.isRequired,
   }).isRequired,
 };
 

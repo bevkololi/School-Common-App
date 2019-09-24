@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 import Navbar from '../../containers/Navbar';
 import SideNav from '../../components/SideNav';
-import AddUniformsForm from '../../components/AddUniformsForm';
-import ProfileCard from '../../components/ProfileCard';
+import AddUniformsForm from '../../containers/AddUniformsForm';
+import ProfileCard from '../../containers/ProfileCard';
 
 
 
-class AddUniformsPage extends Component {
-    render() {
-        return (
-            <>
-                <Navbar />
-                <SideNav />
-                <AddUniformsForm />
-                <ProfileCard />
-            </>
-        );
-    }
+const AddUniformsPage = props => {
+    return (
+        <>
+            <Navbar />
+            <SideNav />
+            <AddUniformsForm {...props}/>
+            <ProfileCard />
+        </>
+    );
 }
 
 export default AddUniformsPage;

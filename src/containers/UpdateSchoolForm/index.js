@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { updateSchoolAction, getSchoolAction } from './state/actions';
+import { getSlug } from '../../utils/auth';
 import swal from 'sweetalert';
 
 class UpdateSchoolForm extends Component {
@@ -15,6 +16,7 @@ class UpdateSchoolForm extends Component {
       history: '',
     },
     errors: [],
+    success: false,
   };
 
   // componentDidMount(){
@@ -40,18 +42,26 @@ class UpdateSchoolForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    const slug = getSlug();
     const data = { ...this.state };
     const { updateSchool, match = {} } = this.props;
-    const { params = {} } = match;
-    const { slug } = params;
+    // const { params = {} } = match;
+    // const { slug } = params;
     updateSchool(slug, data);
   };
 
   componentDidUpdate = (prevProps) => {
-    const { success } = this.props;
+    const { success, history } = this.props;
     if (!prevProps.success && success) {
+      localStorage.setItem('slug', JSON.stringify(this.props.school.data.school.slug));
       setTimeout(this.clearState, 1000);
-      swal("School Updated Successfully!", "View school to double check and make any more changes!", "success")
+      swal("School Updated Successfully!",
+           "View school to double check and make any more changes!",
+           "success").then(function () {
+             window.location.reload();
+           });
+      // const slug = getSlug()
+      // history.push(`/schools/view/${slug}`);
     }
   };
 
@@ -84,6 +94,7 @@ class UpdateSchoolForm extends Component {
         history: '',
       },
       errors: [],
+      success: false,
     });
   };
 
@@ -165,9 +176,10 @@ UpdateSchoolForm.propTypes = {
   getSchool: PropTypes.func.isRequired,
   isSaving: PropTypes.bool.isRequired,
   // school: PropTypes.shape({}).isRequired,
-  slug: PropTypes.string.isRequired,
+  // slug: PropTypes.string.isRequired,
   history: PropTypes.shape({}).isRequired,
   match: PropTypes.shape({}).isRequired,
+  success: PropTypes.bool.isRequired,
 };
 
 // const mapStateToProps = (state) => ({
@@ -175,7 +187,7 @@ UpdateSchoolForm.propTypes = {
 //   errors: state.schoolupdate.errors
 // });
 
-const mapStateToProps = ({ schoolupdate}) => schoolupdate;
+const mapStateToProps = ({ schoolupdate }) => schoolupdate;
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   updateSchool: updateSchoolAction,

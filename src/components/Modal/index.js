@@ -9,6 +9,7 @@ const Modal = ({
   bottomSheet,
   fixedFooter,
   footer,
+  event
 }) => (
     // <div id={id} className={`modal ${fixedFooter && 'modal-fixed-footer'} ${bottomSheet && 'bottom-sheet'}`}>
     //   <div className="modal-content">
