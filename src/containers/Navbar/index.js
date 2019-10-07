@@ -21,6 +21,10 @@ class Navbar extends Component {
     window.location.reload();
   };
 
+  onClick = () => {
+    window.location.href = "/profile/update"
+  }
+
   getAuthenticatedMenu = user => (
     <>
       <header id="header">
@@ -48,7 +52,7 @@ class Navbar extends Component {
                 <a href="#">
                   <img src={user.image || avatar} className="profile-image img-circle" /></a>
                 <ul>
-                  <li><Link to={ROUTES.profile}>Profile</Link></li>
+                  <li onClick={this.onClick}><a>Profile</a></li>
                   <li><Link to={ROUTES.schools.create}>Add School</Link></li>
                   <li><Link to={ROUTES.index}>My schools</Link></li>
                   <li><Link to={ROUTES.index}>Notifications</Link></li>

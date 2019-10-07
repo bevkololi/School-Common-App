@@ -8,7 +8,7 @@ const UniformsPage = props => {
         <><Navbar />
             <div className="row">
                 <div className="container">
-                    <h2>Uniforms</h2>
+                    {/* <h2>Uniforms</h2> */}
                     <Uniforms {...props}/>
                 </div>
             </div>

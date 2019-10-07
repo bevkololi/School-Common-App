@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { editUserProfileAction } from './state/actions';
+import { getUserProfileAction } from "../EditProfileForm/state/actions";
+import swal from 'sweetalert';
+import { getCurrentUser } from "../../utils/auth";
 
 class EditProfileForm extends Component {
   state = {
@@ -42,6 +45,7 @@ class EditProfileForm extends Component {
     }
     const { editUserProfile, user } = this.props;
     editUserProfile(user.username, data);
+    swal("Profile updated successfully!", "Viewers can now see your school profile.", "success");
   };
 
   componentWillReceiveProps(nextProps) {
@@ -127,15 +131,19 @@ const mapDispatchToProps = dispatch => bindActionCreators(
 
 export const mapStateToProps = state => ({
   profile: state.userProfiles.profile,
+  success: state.userProfiles.success,
+  getUserProfile: getUserProfileAction,
 });
 
 EditProfileForm.propTypes = {
   editUserProfile: PropTypes.func.isRequired,
+  getUserProfile: PropTypes.func.isRequired,
   user: PropTypes.shape({}).isRequired,
   profile: PropTypes.shape({
     // image: PropTypes.shape([]).isRequired,
     // bio: PropTypes.string.isRequired,
   }).isRequired,
+  success: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditProfileForm);

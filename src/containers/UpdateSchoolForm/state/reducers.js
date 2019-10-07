@@ -8,7 +8,7 @@ import {
 
 export const initialState = {
     isSaving: false,
-    isSaved: true,
+    isSaved: false,
     errors: [],
     school: {
         school: {}
@@ -38,12 +38,11 @@ export default (state = initialState, action) => {
                 isSaved: false,
                 isSaving: false,
                 errorFetching: true,
-                errors: [action.payload.data.message],
+                errors: action.errors,
             };
         case SCHOOL_FETCH_SUCCESS:
             return {
                 ...state,
-                isSaved: true,
                 isFetching: false,
                 isFetched: true,
                 school: action.payload,

@@ -19,7 +19,7 @@ class Events extends Component {
     total_pages: null,
     next_page: null,
     previous_page: null,
-    edit_id : null,
+    edit_id: null,
   };
 
   componentDidMount() {
@@ -27,11 +27,14 @@ class Events extends Component {
     const { params = {} } = match;
     const { slug } = params;
     fetchEvents(slug);
-    setInterval(this.editEvent, 1000);
+    // setInterval(this.editEvent, 100);
   }
 
-  editEvent = (event_id) => {
-    this.setState({ edit_id: event_id});
+  editEvent = (edit_id) => {
+    // console.log(e.target.name);
+    // alert('I was clicked');
+    // this.setState({ edit_id: edit_id}, () => console.log(this.state));
+    this.setState(prevState => ({ edit_id }));
   }
 
   handleDelete(event_id) {
@@ -72,39 +75,42 @@ class Events extends Component {
     const eventsList = events.length ? (
       events.map(event => {
         return (
-          <div className="events" key={event.event_id}>
-            <EditEvent {...this.props} edit_id={this.state.edit_id} />
-            <table>
-              <thead>
-                <tr>
-                  <th scope="row">{event.title}</th>
-                  <td colSpan="2">{event.date}</td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">
-                    <time dateTime="08:30:00">{event.time}</time>
-                  </th>
-                  <td colSpan="2">{event.body}</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <p></p>
-                  </th>
-                  <td colSpan="2">
-                    <button type="button" className="main-button icon-button edit-event modal-trigger" href={`#edit-event-modal_${event.event_id}`} >
-                      Edit
+          <>
+            <div className="events" key={event.event_id}>
+              <EditEvent {...this.props} edit_id={this.state.edit_id} />
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="row">{event.title}</th>
+                    <td colSpan="2">{event.date}</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                      <time dateTime="08:30:00">{event.time}</time>
+                    </th>
+                    <td colSpan="2">{event.body}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      <p></p>
+                    </th>
+                    <td colSpan="2">
+                      <button type="button" className="main-button icon-button edit-event modal-trigger" href={`#edit-event-modal_${event.event_id}`}
+                        onClick={() => this.setState({ edit_id: event.event_id })}>
+                        Edit
                     </button>
-                    <button type="button" className="main-button icon-button delete-event" onClick={() => this.handleDelete(event.event_id)} >
-                      Delete
+                      <button type="button" className="main-button icon-button delete-event" onClick={() => this.handleDelete(event.event_id)} >
+                        Delete
                     </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
 
-          </div>
+            </div>
+          </>
         )
       })
     ) : (
@@ -116,6 +122,10 @@ class Events extends Component {
     return (
       <>
         <div>
+          <div>
+            <h2 className="text-center">School Events</h2>
+            <Link to={ROUTES.addevent} type="button" className="add-button icon-button add-event">Add Event</Link>
+          </div>
           {eventsList}
 
 

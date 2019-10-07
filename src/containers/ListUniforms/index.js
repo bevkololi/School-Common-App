@@ -17,6 +17,7 @@ class Uniforms extends Component {
     total_pages: null,
     next_page: null,
     previous_page: null,
+    edit_id: null,
   };
 
   componentDidMount() {
@@ -25,6 +26,13 @@ class Uniforms extends Component {
     const { slug } = params;
     fetchUniforms(slug);
   };
+
+  editUniform = (edit_id) => {
+    // console.log(e.target.name);
+    // alert('I was clicked');
+    // this.setState({ edit_id: edit_id}, () => console.log(this.state));
+    this.setState(prevState => ({ edit_id }));
+  }
 
   handleDelete(event_id) {
     const { deleteUniform, match = {} } = this.props;
@@ -41,12 +49,12 @@ class Uniforms extends Component {
       .then((willDelete) => {
         if (willDelete) {
           deleteUniform(slug, event_id);
-          swal("Event successfully deleted!", {
+          swal("Uniform successfully deleted!", {
             icon: "success",
           });
           window.location.reload();
         } else {
-          swal("Your event is safe!");
+          swal("Your item is safe!");
         }
       });
   }
@@ -57,29 +65,32 @@ class Uniforms extends Component {
     const uniformsList = uniforms.length ? (
       uniforms.map(uniform => {
         return (
-          <div className="card col-md-4 uniform-card" key={uniform.uniform_id}>
-          <EditUniform title={uniform.title} />
+          <div className="card col-md-4 uniform-card h-100" key={uniform.uniform_id}>
+            <EditUniform {...this.props} edit_id={this.state.edit_id} />
             <div className="view overlay">
               <img className="card-img-top" src={uniform.image} alt="Card image cap" />
             </div>
 
             <div className="card-body">
 
-
+            <div className="card-body-stuff">
               <h4 className="card-title">{uniform.title}</h4>
 
               <p className="card-text">{uniform.description}</p>
-              <div>
+              </div>
+              <div className="card-footer">
 
-                <a href="#" className="btn btn-primary purchase">Purchase</a>
+                <a href="#" className="btn purchase">Purchase</a>
 
                 <a>
-                  <div className="edit-uniform modal-trigger" href="#edit-uniform-modal">
-                    <i className="fa fa-pencil"></i>
+                  <div className="edit-uniform modal-trigger" href={`#edit-uniform-modal_${uniform.uniform_id}`}>
+                    <i className="fa fa-pencil"
+                      onClick={() => this.setState({ edit_id: uniform.uniform_id })}></i>
                   </div>
                 </a>
-                {/* <button type="button" className="main-button icon-button edit-event modal-trigger" href="#edit-uniform-modal">
-                      Edit
+                {/* <button type="button" className="main-button icon-button edit-event modal-trigger" href={`#edit-uniform-modal_${uniform.uniform_id}`}
+                        onClick={() => this.setState({ edit_id: uniform.uniform_id })}>
+                        Edit
                     </button> */}
                 <a>
                   <div className="delete-uniform" >
@@ -92,6 +103,16 @@ class Uniforms extends Component {
             </div>
 
           </div>
+          // <div class="card col-md-4 uniform-card">
+          //   <img class="card-img-top" src={uniform.image} alt="Card image cap" />
+          //   <div class="card-block">
+          //     <h4 class="card-title">{uniform.title}</h4>
+          //     <p class="card-text">{uniform.description}</p>
+          //   </div>
+          //   <div class="card-footer">
+          //     <small class="text-muted">Last updated 3 mins ago</small>
+          //   </div>
+          // </div>
         )
       })
     ) : (
@@ -103,6 +124,10 @@ class Uniforms extends Component {
 
     return (
       <>
+        <div className="align-button">
+          <h2 className="text-center">School Uniforms</h2>
+          <Link to={ROUTES.adduniforms} type="button" className="add-button icon-button add-event">Add Uniform</Link>
+        </div>
         {uniformsList}
       </>
     );

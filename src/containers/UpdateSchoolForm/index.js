@@ -19,12 +19,11 @@ class UpdateSchoolForm extends Component {
     success: false,
   };
 
-  // componentDidMount(){
-  //   const { getSchool, match = {} } = this.props;
-  //   const { params = {} } = match;
-  //   const { slug } = params;;
-  //   getSchool(slug);
-  // }
+  componentDidMount(){
+    const { getSchool } = this.props;
+    const slug = getSlug();
+    getSchool(slug);
+  }
 
   // onChange = (event) => {
   //   this.setState({ [event.target.name]: event.target.value });
@@ -51,10 +50,10 @@ class UpdateSchoolForm extends Component {
   };
 
   componentDidUpdate = (prevProps) => {
-    const { success, history } = this.props;
-    if (!prevProps.success && success) {
+    const { success, isSaved, school } = this.props;
+    if (!prevProps.isSaved && isSaved) {
       localStorage.setItem('slug', JSON.stringify(this.props.school.data.school.slug));
-      setTimeout(this.clearState, 1000);
+      // setTimeout(this.clearState, 1000);
       swal("School Updated Successfully!",
            "View school to double check and make any more changes!",
            "success").then(function () {
@@ -66,24 +65,31 @@ class UpdateSchoolForm extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    const { school } = this.state;
-    const newSchool = nextProps.school;
-    const { history, readOnly, update } = this.props;;
-    if (readOnly) {
-      this.setState({ school: newSchool });
-    } else {
-      if (school.slug !== newSchool.slug && newSchool.slug) {
-        history.push(`/schools/${update ? 'edit/' : ''}${newSchool.slug}`);
-      }
-      this.setState({
-        school: Object.assign(school,
-          { slug: newSchool.slug })
-      });
-    }
+    // const { school } = this.state;
+    // const newSchool = nextProps.school;
+    // const { history, readOnly, update } = this.props;;
+    // if (readOnly) {
+    //   this.setState({ school: newSchool });
+    // } else {
+    //   if (school.slug !== newSchool.slug && newSchool.slug) {
+    //     history.push(`/schools/${update ? 'edit/' : ''}${newSchool.slug}`);
+    //   }
+    //   this.setState({
+    //     school: Object.assign(school,
+    //       { slug: newSchool.slug })
+    //   });
+    // }
     // if (nextProps.errors.length === 0) {
     //   swal("School Updated Successfully!", "View school to double check and make any more changes!", "success")
     //   this.clearState();
     // };
+    console.log('HHHHH', nextProps);
+    this.setState({
+      school: {
+        name: nextProps.school.name, about: nextProps.school.about,
+        history: nextProps.school.history
+      }
+    });
   }
 
   clearState = () => {
@@ -111,7 +117,7 @@ class UpdateSchoolForm extends Component {
 
   render() {
     const { isSaving, errors } = this.props;
-
+    console.log('GGGGGG', this.state);
     return (
       <>
         <div className="col-md-6 col-sm-12">
@@ -174,20 +180,22 @@ UpdateSchoolForm.propTypes = {
   // errors: PropTypes.shape({}),
   updateSchool: PropTypes.func.isRequired,
   getSchool: PropTypes.func.isRequired,
-  isSaving: PropTypes.bool.isRequired,
-  // school: PropTypes.shape({}).isRequired,
+  isSaved: PropTypes.bool.isRequired,
+  school: PropTypes.shape({}).isRequired,
   // slug: PropTypes.string.isRequired,
   history: PropTypes.shape({}).isRequired,
   match: PropTypes.shape({}).isRequired,
   success: PropTypes.bool.isRequired,
 };
 
-// const mapStateToProps = (state) => ({
-//   school: state.schoolupdate.school,
-//   errors: state.schoolupdate.errors
-// });
+const mapStateToProps = (state) => ({
+  school: state.schoolupdate.school,
+  errors: state.schoolupdate.errors,
+  success: state.schoolupdate.success,
+  isSaved: state.schoolupdate.isSaved,
+});
 
-const mapStateToProps = ({ schoolupdate }) => schoolupdate;
+// const mapStateToProps = ({ schoolupdate }) => schoolupdate;
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   updateSchool: updateSchoolAction,

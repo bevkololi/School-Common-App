@@ -1548,6 +1548,10 @@ table h4 {
 	margin-top: 30px;
 }
 
+.card-body-stuff {
+	min-height: 80px;
+}
+
 .card-img-top {
 	width: 360px;
 	height: 220px;
@@ -2289,13 +2293,13 @@ Profile Card*/
 
 .fa-pencil {
 	font-size: 30px;
-	color: rgb(27, 216, 128);
+	color: #798696;
 	display: inline-block;
 	vertical-align: top;
 }
 .fa-trash-o {
 	font-size: 30px;
-	color: rgb(27, 216, 128);
+	color: rgb(216, 103, 27);
 	vertical-align: top;
 }
 .edit-button {
@@ -2355,10 +2359,28 @@ nav li:hover ul li {
 	Events
 \*------------------------------------*/
 .delete-event {
-	background-color: red;
+	background-color: rgb(216, 103, 27);
 	margin-left: 10px;
-	border-color: red;
+	border-color: rgb(216, 103, 27);;
 	color: white;
+}
+
+.delete-event:hover , .delete-event:focus {
+	background-color:#fff;
+	border: 2px solid rgb(216, 103, 27);
+	color: rgb(216, 103, 27);
+}
+
+.edit-event {
+	background-color: rgb(65, 184, 128);
+	margin-left: 10px;
+	border-color: rgb(65, 184, 128);
+}
+
+.edit-event:hover , .edit-event:focus {
+	background-color:#fff;
+	border: 2px solid rgb(65, 184, 128);
+	color: rgb(65, 184, 128);
 }
 
 .modal {
@@ -2376,17 +2398,46 @@ nav li:hover ul li {
     background-color: #000000;
     opacity:1.0;
 }
+
+.add-button {
+	position:relative;
+	/* display:inline-block; */
+	padding:10px 30px;
+	background-color: rgb(65, 184, 128);
+	border: 2px solid transparent;
+	border-radius: 40px;
+	color: #FFF;
+	-webkit-transition:0.2s all;
+	transition:0.2s all;
+	cursor: pointer;
+	right: -990px;
+	top: 30px;
+}
+
+.add-button:hover , .add-button:focus {
+	background-color:#fff;
+	border: 2px solid rgb(65, 184, 128);
+	color: rgb(65, 184, 128);
+}
   
 /*------------------------------------*\
 	Uniforms
 \*------------------------------------*/
 .purchase {
 	float: left;
+	background-color: rgb(65, 184, 128);
+	color: #fff;
+}
+
+.purchase:hover , .purchase:focus {
+	/* background-color:#fff; */
+	box-shadow: 2px solid rgb(65, 184, 128);
+	color: #fff;
 }
 
 .edit-uniform {
 	float: left;
-	margin-left: 150px;
+	margin-left: 190px;
 	cursor: pointer;
 }
 
@@ -2394,6 +2445,10 @@ nav li:hover ul li {
 	float: left;
 	margin-left: 20px;
 	cursor: pointer;
+}
+
+.align-button {
+	margin-bottom: 30px;
 }
 
 

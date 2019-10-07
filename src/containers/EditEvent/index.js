@@ -26,49 +26,48 @@ class EditEvent extends Component {
   componentDidMount = () => {
     this.updateModals();
     // const clickedModal = document.getElementById('[id^="edit-event-modal"]');
-    // console.log('AAAAAA', clickedModal);
   };
 
-  componentWillReceiveProps(prevProps) {
+  componentWillReceiveProps(nextprops) {
     this.updateModals();
+    // this.setState({ edit_id: nextProps})
     // const { events } = prevProps;
     // console.log('YYYYYYY', events);
     // events.forEach(event => {
-    //   const modal = document.querySelector(`#edit-event-modal_${event.event_id}`);
-      // const modal = document.getElementById(`#edit-event-modal_${event.event_id}`);
-      // console.log('AAAAAA', modal);
-      // const the_id = JSON.stringify(modal.id);
-      // const edit_id = the_id.match(/\d+/g).pop();
-      // if (edit_id == event.event_id) {
-      //   console.log('ZZZZZZZ', Materialize.Modal.init(modal, {}));
-      //   this.setState({
-      //     event: {
-      //       title: event.title, date: event.date,
-      //       time: event.time, body: event.body
-      //     }
-      //   });
-      // }
+    //   const modal = document.queryS  qa23elector(`#edit-event-modal_${event.event_id}`);
+    // const modal = document.getElementById(`#edit-event-modal_${event.event_id}`);
+    // console.log('AAAAAA', modal);
+    // const the_id = JSON.stringify(modal.id);
+    // const edit_id = the_id.match(/\d+/g).pop();
+    // if (edit_id == event.event_id) {
+    //   console.log('ZZZZZZZ', Materialize.Modal.init(modal, {}));
+    //   this.setState({
+    //     event: {
+    //       title: event.title, date: event.date,
+    //       time: event.time, body: event.body
+    //     }
+    //   });
+    // }
     // })
   }
 
   updateModals = () => {
     const { events, edit_id } = this.props;
-    console.log('XXXXXXX', edit_id);
     events.forEach(event => {
       const modal = document.querySelector(`#edit-event-modal_${event.event_id}`);
       Materialize.Modal.init(modal, {});
       const the_id = JSON.stringify(modal.id);
-      const edit_id = the_id.match(/\d+/g).pop();
-      // if (edit_id == event.event_id) {
-      //   console.log('YYYYYYYY', edit_id);
-      //   console.log('ZZZZZZZZ', event.event_id);
-      //   this.setState({
-      //     event: {
-      //       title: event.title, date: event.date,
-      //       time: event.time, body: event.body
-      //     }
-      //   });
-      // }
+      const edit_id_test = the_id.match(/\d+/g).pop();
+      if (edit_id_test == edit_id) {
+        // console.log('YYYYYYYY', edit_id);
+        // console.log('ZZZZZZZZ', event.event_id);
+        this.setState({
+          event: {
+            title: event.title, date: event.date,
+            time: event.time, body: event.body
+          }
+        });
+      }
     });
   };
 

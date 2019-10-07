@@ -24,6 +24,7 @@ const loginAction = (data, successCallback) => (dispatch) => {
             localStorage.setItem('image', JSON.stringify(res.data.user.image));
             localStorage.setItem('user', JSON.stringify(res.data.user));
             localStorage.setItem('token', JSON.stringify(res.data.user.token));
+            localStorage.setItem('slug', JSON.stringify(res.data.user.slug));
             dispatch(loginSuccess(res.data.user));
         })
         .catch((err) => {

@@ -11,19 +11,6 @@ const Modal = ({
   footer,
   event
 }) => (
-    // <div id={id} className={`modal ${fixedFooter && 'modal-fixed-footer'} ${bottomSheet && 'bottom-sheet'}`}>
-    //   <div className="modal-content">
-    //     <h4>{ title }</h4>
-    //     { children }
-    //   </div>
-    //   {
-    //     footer && (
-    //       <div className="modal-footer">
-    //         {footer}
-    //       </div>
-    //     )
-    //   }
-    // </div>
     <div className="modal" id={id} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div className="modal-dialog" role="document">
         <div className="modal-content">
